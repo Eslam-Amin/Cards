@@ -39,6 +39,9 @@ func deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
 }
 
+// toString converts a deck into a string representation.
+// It takes all the cards in the deck and joins them together with a comma separator.
+// It returns a string representation of the deck.
 func (d deck) toString() string {
 	return strings.Join([]string(d), ",")
 }
