@@ -23,13 +23,15 @@ func generateDeck() deck {
 	return cards
 }
 
-// receiver function to print the deck
+// print prints out all the cards in the deck.
 func (d *deck) print() {
 	for _, card := range *d {
 		fmt.Println(card)
 	}
 }
 
+// deal takes a deck and a hand size and returns two slices of the deck.
+// The first slice is the hand, and the second slice is the deck with the hand removed.
 func deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
 }
