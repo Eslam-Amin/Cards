@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
 	"strings"
+	"time"
 )
 
 // Create a new type of deck
@@ -38,6 +40,18 @@ func (d *deck) print() {
 // The first slice is the hand, and the second slice is the deck with the hand removed.
 func deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
+}
+
+// shuffle shuffles the deck in place.
+// It uses the current time as a source for randomness,
+// and swaps each card with a random card in the deck.
+func (d deck) shuffle() {
+	source := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(source)
+	for index := range d {
+		newPosition := r.Intn(len(d) - 1)
+		d[index], d[newPosition] = d[newPosition], d[index]
+	}
 }
 
 // toString converts a deck into a string representation.
