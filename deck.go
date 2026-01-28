@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -44,4 +45,12 @@ func deal(d deck, handSize int) (deck, deck) {
 // It returns a string representation of the deck.
 func (d deck) toString() string {
 	return strings.Join([]string(d), ",")
+}
+
+// saveToFile saves the deck to a file.
+// It takes a filename as a string argument and saves the deck to the file.
+// If there is an error saving the file, it returns the error.
+func (d deck) saveToFile(filename string) error {
+	os.WriteFile(filename, []byte(d.toString()), 0666)
+	return nil
 }
