@@ -51,6 +51,6 @@ func (d deck) toString() string {
 // It takes a filename as a string argument and saves the deck to the file.
 // If there is an error saving the file, it returns the error.
 func (d deck) saveToFile(filename string) error {
-	os.WriteFile(filename, []byte(d.toString()), 0666)
-	return nil
+	return os.WriteFile(filename, []byte(d.toString()), 0666)
+
 }
