@@ -54,3 +54,19 @@ func (d deck) saveToFile(filename string) error {
 	return os.WriteFile(filename, []byte(d.toString()), 0666)
 
 }
+
+// newDeckFromFile takes a filename as a string argument and returns a deck from the file.
+// If there is an error reading the file, it logs the error and exits the program.
+// It returns a deck created from the file contents, with each card separated by a comma.
+// If the file is empty, it returns an empty deck.
+func newDeckFromFile(filename string) deck {
+	bs, err := os.ReadFile(filename)
+	if err != nil {
+		// Option #1 - Log the error and return a call to generateDeck()
+		// Option #2 - Log the error and entirely quit the program
+
+		fmt.Println("Error: ", err)
+		os.Exit(1)
+	}
+	return deck(strings.Split(string(bs), ","))
+}
