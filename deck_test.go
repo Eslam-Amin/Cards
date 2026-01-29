@@ -4,10 +4,13 @@ import "testing"
 
 func TestNewDeck(t *testing.T) {
 	d := generateDeck()
+
+	// Check if the length of the deck is 52
 	if len(d) != 52 {
 		t.Errorf("Expected deck length of 52 but got %v", len(d))
 	}
 
+	// Check if the first and last card are correct
 	if d[0] != "Ace of Spades" {
 		t.Errorf("Expected first card of Ace of Spades but got %v", d[0])
 	}
